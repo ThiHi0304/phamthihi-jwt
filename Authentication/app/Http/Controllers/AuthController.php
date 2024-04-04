@@ -64,6 +64,7 @@ class AuthController extends Controller
           if(!$user){
             return response()->json(['error' =>'User no found'], 404);
           }
+          
           auth('api')->invalidate();//Vô hiệu hóa token hiện tại
           $token = auth()->login($user);//Tạo token mới
           $refreshToken = $this->createRefreshToken();
